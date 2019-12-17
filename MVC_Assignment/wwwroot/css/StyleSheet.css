@@ -1,0 +1,13 @@
+﻿body {
+    background-color: lightgray;
+}
+nav{
+    float: left;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: white;
+    background-color: red;
+}
