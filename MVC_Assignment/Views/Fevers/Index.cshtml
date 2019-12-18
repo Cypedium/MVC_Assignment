@@ -1,0 +1,23 @@
+﻿@using MVC_Assignment.Models
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fever Index</h1>
+
+<a asp-action="Create" >Create</a>
+<table>
+
+    @if (ViewBag.FeverList != null)
+    {
+        @for (int i = 0; i < ((List<Fever>)ViewBag.FeverList).Count; i++)
+        {
+    <tr>
+        <td>@(((Fever)ViewBag.FeverList[i]).Id)</td>
+        <td>@(((Fever)ViewBag.FeverList[i]).Info)</td>
+    </tr>
+        }
+    }
+
+</table>
+

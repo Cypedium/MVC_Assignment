@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form id="formfever" asp-action="Create" asp-controller="Fevers" method="post">
+    <input type="text" name="info" value="" placeholder="Fever info" />
+
+    <span>@ViewBag.Msg</span>
+
+    <input type="submit" value="Save" />
+
+</form>

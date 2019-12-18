@@ -3,25 +3,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" /> 
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <img src="~/img/logga.png" />
     <nav>
         <ul>
             <li>
-                <a href="@Url.Action("Index", "Home")">Index</a>
+                <a asp-action="Index" asp-controller="Home">Index</a>
             </li>
             <li>
-                @Html.ActionLink("Contact me", "Contact", "Home")
+                <a asp-action="Contact" asp-controller="Home">Contact</a>
             </li>
             <li>
                 <a asp-action="Projects" asp-controller="Home">Projects</a>
             </li>
+            <li>
+                <a asp-action="Index" asp-controller="Fevers">Fever</a>
+            </li>
         </ul>
     </nav>
 
-    <div>
+    <div id="renderbody">
         @RenderBody()
     </div>
 
