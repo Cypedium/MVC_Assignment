@@ -1,0 +1,15 @@
+﻿@using MVC_Assignment.Models
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Check Fever</h1>
+
+<form id="formfever" asp-action="Index" asp-controller="CheckFevers" method="post">
+    <input type="text" name="info" value="" placeholder="CheckFevers info" />
+
+    <span>@ViewBag.Msg</span>
+
+    <input type="submit" value="Save" />
+
+</form>

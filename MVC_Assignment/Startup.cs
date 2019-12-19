@@ -36,12 +36,14 @@ namespace MVC_Assignment
             app.UseEndpoints(endpoints =>
             {
                 // special routes before default
+                
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 //endpoints.MapGet("/", async context =>
                 //{
                 //    await context.Response.WriteAsync("Hello World!");
                 //});
             });
+            
         }
     }
 }
