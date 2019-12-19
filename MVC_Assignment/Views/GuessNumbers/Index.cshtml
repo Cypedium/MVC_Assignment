@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form id="formfever" asp-action="Index" asp-controller="GuessNumbers" method="post">
+    <input type="text" name="guessnumber" value="" placeholder="GuessNumber guessnumber" />
+
+    <span>@ViewBag.Msg</span>
+
+    <input type="submit" value="Save" />
+
+</form>

@@ -17,6 +17,9 @@ namespace MVC_Assignment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();// add MVC so we can use it
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,8 +38,9 @@ namespace MVC_Assignment
 
             app.UseEndpoints(endpoints =>
             {
-                // special routes before default
-                
+                endpoints.MapControllerRoute("NumberGuess", "GuessNumber",
+                    defaults: new { controller = "GuessNumbers", action = "Index" });
+                // special routes before default 
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 //endpoints.MapGet("/", async context =>
                 //{

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Assignment.Models;
 
 namespace MVC_Assignment.Controllers
 {
-    public class CheckFeversController : Controller
+    public class GuessNumbersController : Controller
     {
-       
+        
+        
         public IActionResult Index()
         {
             return View();
@@ -21,31 +23,36 @@ namespace MVC_Assignment.Controllers
         //}
         
         [HttpPost]
-        public IActionResult Index(string info)
+        public IActionResult Index(int random, string guessnumber)
         {
             try
             {
-                if (string.IsNullOrEmpty(info))
+                if (string.IsNullOrEmpty(guessnumber))
                 {
                     ViewBag.Msg = "The field needs a value";
                     return View();
                 }
 
-                else if (int.Parse(info) == 0)
+                else if (int.Parse(guessnumber) == 0)
                 {
                     ViewBag.Msg = "You need to enter a number";
                     return View();
                 }
                 else
                 {
-                    if (int.Parse(info) > 37)
+                    if (int.Parse(guessnumber) > GuessNumber.random)
                     {
-                        ViewBag.Msg = "You got fever";
+                        ViewBag.Msg = "Guess a lower number";
+                    }
+                    else if (int.Parse(guessnumber) < GuessNumber.random)
+                    {
+                        ViewBag.Msg = "Guess a higher number";
                     }
                     else
                     {
-                        ViewBag.Msg = "You feeling fine";
+                        ViewBag.Msg = "Wow! You got the right answer";
                     }
+                    
                     return View();
                 }
             }
@@ -53,7 +60,7 @@ namespace MVC_Assignment.Controllers
             {
                 ViewBag.Msg = "You need to enter a number";
                 return View();
-            }                                                
+            }
         }
     }
 }
