@@ -14,6 +14,7 @@ namespace MVC_Assignment.Controllers
         
         public IActionResult Index()
         {
+            ViewBag.Msg3 = HttpContext.Session.GetString("RandomNumber");
             return View();
         }
         //[HttpGet]
@@ -52,7 +53,7 @@ namespace MVC_Assignment.Controllers
                     {
                         ViewBag.Msg = "Wow! You got the right answer";
                     }
-                    
+                    HttpContext.Session.SetString("RandomNumber", GuessNumber.random.ToString());
                     return View();
                 }
             }
