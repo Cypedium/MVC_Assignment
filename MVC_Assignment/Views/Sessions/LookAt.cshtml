@@ -5,9 +5,9 @@
 
 <h1>LookAt</h1>
 
-@if (ViewBag.Msg2 != null)
+@if (ViewBag.Msg != null)
 {
-    <h3>@ViewBag.Msg2</h3>
+    <h3>@ViewBag.Msg</h3>
 }
 else
 {
@@ -18,7 +18,7 @@ else
 
 <form asp-action="SaveSession" method="post">
 
-    <input type="text" name="messsage" value="" />
+    <input type="text" name="message" value="" />
 
     <input type="submit" name="Save in Session"  />
 

@@ -11,7 +11,7 @@ namespace MVC_Assignment.Controllers
     {
         public IActionResult LookAt()
         {
-            ViewBag.Msg2 = HttpContext.Session.GetString("KeyName");
+            ViewBag.Msg = HttpContext.Session.GetString("KeyName");
             return View();
         }
         public IActionResult SaveSession(string message)

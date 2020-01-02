@@ -5,8 +5,17 @@
 
 <h1>Index</h1>
 
+@if (ViewBag.Msg != null)
+{
+    <h3>@ViewBag.Msg</h3>
+}
+else
+{
+    <h3>Session is emtpty</h3>
+}
+
 <form id="formfever" asp-action="Index" asp-controller="GuessNumbers" method="post">
-    <input type="text" name="guessnumber" value="" placeholder="GuessNumber guessnumber" />
+    <input type="text" name="myGuess" value="" placeholder="Type a guess" />
 
     <span>@ViewBag.Msg</span>
 

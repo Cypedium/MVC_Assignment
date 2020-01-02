@@ -32,7 +32,7 @@ header {
 h1 {
     position: relative;
     top: 2px;
-    left: 10px;
+    left: 6px;
     width: 520px;
     height: 100%;
     margin: 0;
@@ -45,6 +45,14 @@ span {
     left: 70px;
     width: 200px;
     
+}
+
+p {
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+    padding: 10px 14px;
+    color: #1e1e1e;
 }
 
 #renderbody {

@@ -10,11 +10,16 @@ namespace MVC_Assignment.Controllers
 {
     public class GuessNumbersController : Controller
     {
-        
+        public int RandomNumber()
+        {
+            Random random_ = new Random();
+            return random_.Next(1, 100);  
+        }
         
         public IActionResult Index()
         {
-            ViewBag.Msg3 = HttpContext.Session.GetString("RandomNumber");
+            int randomnumber=RandomNumber();
+            HttpContext.Session.SetString("MyRandomNumber", randomnumber.ToString());
             return View();
         }
         //[HttpGet]
@@ -24,28 +29,31 @@ namespace MVC_Assignment.Controllers
         //}
         
         [HttpPost]
-        public IActionResult Index(int random, string guessnumber)
+        public IActionResult Index(string myGuess)
         {
             try
             {
-                if (string.IsNullOrEmpty(guessnumber))
+                
+                if (string.IsNullOrEmpty(myGuess))
                 {
                     ViewBag.Msg = "The field needs a value";
                     return View();
                 }
 
-                else if (int.Parse(guessnumber) == 0)
+                else if (int.Parse(myGuess) == 0)
                 {
                     ViewBag.Msg = "You need to enter a number";
                     return View();
                 }
                 else
                 {
-                    if (int.Parse(guessnumber) > GuessNumber.random)
+                    
+                    string randomnumber = HttpContext.Session.GetString("MyRandomNumber");
+                    if (int.Parse(myGuess) > int.Parse(randomnumber))
                     {
                         ViewBag.Msg = "Guess a lower number";
                     }
-                    else if (int.Parse(guessnumber) < GuessNumber.random)
+                    else if (int.Parse(myGuess) < int.Parse(randomnumber))
                     {
                         ViewBag.Msg = "Guess a higher number";
                     }
@@ -53,7 +61,7 @@ namespace MVC_Assignment.Controllers
                     {
                         ViewBag.Msg = "Wow! You got the right answer";
                     }
-                    HttpContext.Session.SetString("RandomNumber", GuessNumber.random.ToString());
+                    
                     return View();
                 }
             }
