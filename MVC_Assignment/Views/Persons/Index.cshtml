@@ -1,0 +1,24 @@
+﻿@model List<Person>
+@{
+    ViewData["Title"] = "Person Index";
+}
+
+<h1>Index</h1>
+
+<a asp-action="Create">Create Person</a>
+
+
+    <table>
+        @foreach (Person aPerson in Model)
+        {
+            <tr>
+                <td>
+                    Name: @aPerson.Name
+                    Country: @aPerson.Country
+                    <a asp-action="Remove">Remove Person
+                    <input type="number" id="aPerson.Id" 
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>

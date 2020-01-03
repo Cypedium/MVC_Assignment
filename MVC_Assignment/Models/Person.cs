@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace MVC_Assignment.Models
 {
-    public class Car
+    public class Person
     {
         static int idCounter = 0; //Databas senare
-        public static List<Car> carList = new List<Car>(); //Databas senare
+        public static List<Person> personList = new List<Person>(); //Databas senare
 
         public int Id { get; set; }
-        public string Brand { get; set; }
-        public string ModelName { get; set; }
+        public string Name { get; set; }
+        public string Country { get; set; }
 
-        public Car()
+        public Person()
         {
             Id = ++idCounter;
         }
