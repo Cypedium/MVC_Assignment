@@ -15,10 +15,9 @@
                 <td>
                     Name: @aPerson.Name
                     Country: @aPerson.Country
-                    <a asp-action="Remove">Remove Person
-                    <input type="number" id="aPerson.Id" 
-                    </a>
+
+                    <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove Person</a> 
                 </td>
             </tr>
         }
-    </table>
+    </table> 
