@@ -42,5 +42,16 @@ namespace MVC_Assignment.Models
             return View("Index", _personService.All());
 
         }
+        [HttpGet]
+        public IActionResult Filter()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Filter(string filterInput)
+        {
+
+            return View("Index", _personService.Filter(filterInput));
+        }
     }
 }

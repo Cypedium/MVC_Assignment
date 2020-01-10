@@ -7,8 +7,8 @@ namespace MVC_Assignment.Models
 {
     public class PersonService : IPersonService
     {
-        static int idCounter = 0; 
-
+        static int idCounter = 0;
+        public string filterInput = "";
         private static List<Person> personList = new List<Person>(); 
 
         public List<Person> All()
@@ -45,8 +45,21 @@ namespace MVC_Assignment.Models
             }
         return false;
         }
-            //Person Find(int id);
+
+        
+        public List<Person> Filter(string filterInput)
+        {
+            List<Person> filterPersonList = new List<Person>();
+            foreach (Person item in personList)
+            {
+                if (item.Name == filterInput || item.Country == filterInput)
+                {
+                    filterPersonList.Add(item);
+                }
+            }
+            return filterPersonList;
+        }
             
-            //bool Update(Person car);
+            //bool Update(Person person);
     }
 }

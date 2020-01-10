@@ -1,4 +1,4 @@
-﻿@model List<Person>
+﻿@model IEnumerable<MVC_Assignment.Models.Person>
 @{
     ViewData["Title"] = "Person Index";
 }
@@ -8,16 +8,17 @@
 <p>@ViewBag.msg</p>
 
 <a asp-action="Create">Create Person</a>
-    <table>
-        @foreach (Person aPerson in Model)
-        {
-            <tr>
-                <td>
-                    Name: @aPerson.Name
-                    Country: @aPerson.Country
+<a asp-action="Filter">Filter Person</a>
+<table>
+    @foreach (Person aPerson in Model)
+    {
+        <tr>
+            <td>
+                Name: @aPerson.Name
+                Country: @aPerson.Country
 
-                    <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove Person</a> 
-                </td>
-            </tr>
-        }
-    </table> 
+                <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove Person</a>
+            </td>
+        </tr>
+    }
+</table>
