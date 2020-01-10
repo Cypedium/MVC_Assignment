@@ -9,8 +9,8 @@ namespace MVC_Assignment.Models
     {
         Person Create(string name, string country);
         bool Remove(int id);
-        Person Find(int id);
-        List<Person> All();
-        bool Update(Person car);
+        //Person Find(int id);
+        //List<Person> All();
+        //bool Update(Person car);
     }
 }

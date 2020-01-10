@@ -9,9 +9,10 @@ namespace MVC_Assignment.Models
 {
     public class PersonsController : Controller
     {
+        readonly PersonService _personService = new PersonService();
         public IActionResult Index() //List
         {
-            return View(Person.personList);
+            return View(_personService.All());
         }
         [HttpGet]
         public IActionResult Create()
@@ -19,33 +20,26 @@ namespace MVC_Assignment.Models
             return View();
         }
         [HttpPost]
-        public IActionResult Create(PersonViewModel personViewModel) //personViewModel används för att inte få med id
+        public IActionResult Create(PersonViewModel person) //personViewModel uses to avoid users to access Id
         {
             if (ModelState.IsValid)
             {
-                Person.personList.Add(
-                    new Person()
-                    {                       
-                        Name = personViewModel.Name,
-                        Country = personViewModel.Country
-                    });
+                _personService.Create(person.Name, person.Country);
 
                 return RedirectToAction("Index");
             }
-            return View(personViewModel); //skickar med personViewModel för att kunna använda ModelState om någon required inte uppfylls
+            return View(person); //personViewModel uses to sent wrong input to View 
         }
-        public IActionResult Remove(int id) //se en Person
+        public IActionResult Remove(int id) 
         {         
-                foreach (var item in Person.personList)
-                {
-                    if (item.Id == id)
-                    { 
-                        Person.personList.Remove(item);
-                        break;
-                    }
-                   
-                }
-                return RedirectToAction("Index");   
+            bool result = _personService.Remove(id);
+
+            if (result)
+            { ViewBag.msg = "The person was successfully removed"; }
+            else
+            { ViewBag.msg = "The person could not be found"; }
+
+            return View("Index", _personService.All());
 
         }
     }

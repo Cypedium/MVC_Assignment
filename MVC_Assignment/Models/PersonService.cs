@@ -7,36 +7,46 @@ namespace MVC_Assignment.Models
 {
     public class PersonService : IPersonService
     {
-        //Constructor 
-        public int Id { get; set; }
-        static int idCounter = 0; //Databas senare
-        public PersonService()
-        {
-            Id = ++idCounter;
-        }
+        static int idCounter = 0; 
 
-        public string Name { get; set; }
-        public string Country { get; set; }
-        private static List<Person> personList = new List<Person>(); //Databas senare
-        Person Create(string name, string country)
+        private static List<Person> personList = new List<Person>(); 
+
+        public List<Person> All()
+        {
+            return personList;
+        }
+        public Person Create(string name, string country)
         {
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(country))
             {
                 return null;
             }
-            
-             Person person = new Person()
-                   {
+
+            Person person = new Person()
+            {
+                       Id = ++idCounter,
                        Name = name,
                        Country = country
-                   };
+            };
 
+            personList.Add(person);
             return person;
         }
          
-            bool Remove(int id);
-            Person Find(int id);
-            List<Person> All();
-            bool Update(Person car);
+        public bool Remove(int id)
+        {
+            foreach (Person item in personList)
+            {
+                if (item.Id == id)
+                {
+                    personList.Remove(item);
+                    return true;
+                }
+            }
+        return false;
+        }
+            //Person Find(int id);
+            
+            //bool Update(Person car);
     }
 }
