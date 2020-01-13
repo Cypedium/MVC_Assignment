@@ -26,7 +26,7 @@ namespace MVC_Assignment
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
             });
-
+            
             services.AddMvc();// add MVC so we can use it
             //services.AddControllersWithViews();
             

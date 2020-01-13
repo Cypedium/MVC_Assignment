@@ -9,6 +9,13 @@
 
 <a asp-action="Create">Create Person</a>
 <a asp-action="Filter">Filter Person</a>
+
+<div>
+    <button id="btnPartial">Ajax Partial Person</button>
+    <div id="targetPartial">
+    </div>
+</div>
+
 <table>
     @foreach (Person aPerson in Model)
     {
