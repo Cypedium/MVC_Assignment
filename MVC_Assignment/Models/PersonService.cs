@@ -9,7 +9,14 @@ namespace MVC_Assignment.Models
     {
         static int idCounter = 0;
         public string filterInput = "";
-        private static List<Person> personList = new List<Person>(); 
+        private static List<Person> personList = new List<Person>();
+
+        static PersonService()
+        {
+            personList.Add(new Person() { Id = 1, Name = "Elvira", Country = "Sverige" });
+            personList.Add(new Person() { Id = 2, Name = "Klara", Country = "Sverige" });
+            personList.Add(new Person() { Id = 3, Name = "Charles", Country = "England" });
+        }
 
         public List<Person> All()
         {
@@ -46,7 +53,10 @@ namespace MVC_Assignment.Models
         return false;
         }
 
-        
+        public Person Find(int id) 
+            {
+            return personList.SingleOrDefault(person => person.Id == id);
+            }
         public List<Person> Filter(string filterInput)
         {
             List<Person> filterPersonList = new List<Person>();

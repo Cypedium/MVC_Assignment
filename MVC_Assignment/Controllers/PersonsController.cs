@@ -53,5 +53,15 @@ namespace MVC_Assignment.Models
 
             return View("Index", _personService.Filter(filterInput));
         }
+
+        public IActionResult PersonList()
+        {
+            return PartialView(_personService.All());
+        }
+
+        public IActionResult PersonPartialEdit(int id)
+        {
+            return PartialView("_PersonPartialEdit", _personService.Find(id));
+        }
     }
 }

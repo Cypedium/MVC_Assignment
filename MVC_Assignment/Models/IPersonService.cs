@@ -12,6 +12,6 @@ namespace MVC_Assignment.Models
         List<Person> All();
         List<Person> Filter(string filterInput);
         //bool Update(Person car);
-        //Person Find(int id);
+        Person Find(int id);
     }
 }

@@ -2,8 +2,11 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/css/StyleSheet.css" rel="stylesheet" /> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" initial-scale="1.0"/>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -13,20 +16,31 @@
             <li>
                 <a asp-action="Index" asp-controller="Home">Index</a>
             </li>
+
             <li>
                 <a asp-action="Contact" asp-controller="Home">Contact</a>
             </li>
+
             <li>
                 <a asp-action="Projects" asp-controller="Home">Projects</a>
             </li>
+
             <li>
                 <a asp-action="Index" asp-controller="CheckFevers">Check Fever</a>
-            </li>           
+            </li>
+
             <li>
                 <a asp-action="Index" asp-controller="GuessNumbers">Guessing Game</a>
             </li>
+
             <li>
                 <a asp-action="Index" asp-controller="Persons">Persons</a>
+            </li>
+
+            
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Persons" asp-action="PersonList">Person List</a>
             </li>
         </ul>
     </nav>
@@ -38,6 +52,9 @@
     <footer>
         <p>Mikael Aurell &copy; @DateTime.Now.Year</p>
     </footer>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
