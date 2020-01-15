@@ -10,12 +10,42 @@ $(document).ready(function () {
     })
 })
 
-$(document).ready(function () {
-    $("#aPersonPartialEdit").click(function (e)
-    {
-        e.preventDefault(); var_this = $(this);
-        $.get(_this.attr("Persons/PersonPartialEdit/"), function (res) {                  //_this.attr("href")
-            $('#' + _this.data("targetPartial2")).html(res);
-        });
+//$(document).ready(function () {
+//    $("#aPartialPersonEdit").click(function (e)
+//    {
+//        e.preventDefault();
+//        var _this = $(this);
+//        console.log(_this);
+
+//        $.get(_this.attr("href"), function (res)
+//        {                  //_this.attr("href")
+//            console.log(_this.data("target"));
+//            $('#' + _this.data("target")).html(res);
+//        });
+//    });
+//})
+
+//document.getElementById("aPartialPersonEdit").addEventListener("click", function () { });
+
+//document.getElementById("PartialViewId").addEventListener("click", function (e) {
+
+//    e.preventDefault();
+//    var _this = $(this);
+//    console.log(this);
+//    console.log(_this.attr("href"));
+//    $.get(_this.attr("href"), function (res) {
+//        $('#' + _this.data("target")).html(res);
+//    });
+//});
+
+function partialLink (event) {
+    event.preventDefault();
+    console.log(event);
+    var _this = event.target;
+    
+    console.log(_this.href);
+    $.get(_this.href, function (res) {
+        console.log(res);
+        $('#' + _this.dataset.target).html(res);
     });
-})
+}

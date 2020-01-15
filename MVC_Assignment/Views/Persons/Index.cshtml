@@ -8,12 +8,17 @@
 
 <p>@ViewBag.msg</p>
 
-<a asp-action="Create">Create Person</a>
+<a onclick="partialLink(event)" data-target="createPerson" asp-action="Create" asp-controller="Persons">Create Person</a>
 <a asp-action="Filter">Filter Person</a>
 
 <div>
+
+    <div id="createPerson">
+        
+    </div>
+
     <div>
-        <button id="btnPartial">Ajax Partial Person</button>
+        <a id="btnPartial">Ajax Partial Person</a>
     </div>
 
     <div id="targetPartial">
@@ -28,8 +33,9 @@
     @foreach (Person aPartialPerson in Model)
     {
         <tr>
-            <td>             
-                <a id="aPartialPersonEdit" class="nav-link text-dark" asp-controller="Persons" asp-action="PersonPartialEdit" asp-route-id="@aPartialPerson.Id">Person Nr:@aPartialPerson.Id</a>               
+            <td>
+                @*<a onclick="function()" id="aPartialPersonEdit" asp-controller="Persons" asp-action="PersonPartialEdit" asp-route-id="@aPartialPerson.Id" data-target="targetPartial2">Person Nr:@aPartialPerson.Id</a>*@
+                <a onclick="partialLink(event)" data-target="targetPartial2" asp-controller="Persons" asp-action="PersonPartialEdit" asp-route-id="@aPartialPerson.Id">Person Nr:@aPartialPerson.Id</a>
             </td>
         </tr>
 
