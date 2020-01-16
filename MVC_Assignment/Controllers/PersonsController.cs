@@ -58,10 +58,26 @@ namespace MVC_Assignment.Models
         {
             return PartialView(_personService.All());
         }
-
-        public IActionResult PersonPartialEdit(int id)
+        [HttpGet]
+        public IActionResult PersonPartialId(int id)
         {
-            return PartialView("_PersonPartialEdit", _personService.Find(id));
+            return PartialView("_PersonPartialId", _personService.Find(id));
+        }
+        [HttpGet]
+        public IActionResult PersonCreatePartial()
+        {
+            return PartialView("_PersonCreatePartial");
+        }
+
+        [HttpPost]
+        public IActionResult PersonCreatePartial(PersonViewModel person) //personViewModel uses to avoid users to access Id
+        {
+            if (ModelState.IsValid)
+            {
+                _personService.Create(person.Name, person.Country);
+                return PartialView("Index", _personService.All());
+            }
+            return View(person); //personViewModel uses to sent wrong input to View 
         }
     }
 }

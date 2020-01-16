@@ -10,6 +10,8 @@ $(document).ready(function () {
     })
 })
 
+
+
 //$(document).ready(function () {
 //    $("#aPartialPersonEdit").click(function (e)
 //    {
@@ -40,12 +42,26 @@ $(document).ready(function () {
 
 function partialLink (event) {
     event.preventDefault();
+    console.log("Get");
+    
+    var _this = event.target;
+  
+    $.get(_this.href, function (getResult) {
+       
+        $('#' + _this.dataset.target).html(getResult);
+    });
+}
+
+function postLink(event) {
+    event.preventDefault();
+    console.log("Post");
     console.log(event);
     var _this = event.target;
     
-    console.log(_this.href);
-    $.get(_this.href, function (res) {
-        console.log(res);
-        $('#' + _this.dataset.target).html(res);
+    $.post(_this.action, { Name: "Ida", Country: "Sverige" }, function (postResult) {
+        $('#' + _this.dataset.target).html(postResult);
     });
 }
+
+
+//$.post(_this.action, { Name: _this.form.elements[0].value, Country: _this.form.elements[1].value },  function (postResult) {

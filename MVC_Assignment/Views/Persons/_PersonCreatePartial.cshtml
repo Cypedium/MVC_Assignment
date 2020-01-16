@@ -1,11 +1,14 @@
 ﻿@model PersonViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
     ViewData["Title"] = "Create";
 }
 
 <h1>Create Person</h1>
 
-<form method="post">
+<form onsubmit="postLink(event)" method="post" asp-controller="Persons" asp-action="PersonCreatePartial">
 
     <label asp-for="Name"></label>
     <input asp-for="Name" /><span asp-validation-for="Name"></span>
@@ -13,6 +16,6 @@
     <label asp-for="Country"></label>
     <input asp-for="Country" /><span asp-validation-for="Country"></span>
 
-    <input type="submit" value="Add Person" />
+    <input type="submit" value="Add Person"  data-target="targetPartial2" />
 
 </form>
