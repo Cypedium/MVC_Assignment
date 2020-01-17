@@ -8,7 +8,7 @@
 
 <p>@ViewBag.msg</p>
 
-<a onclick="partialLink(event)" data-target="createPerson" asp-action="PersonCreatePartial" asp-controller="Persons">Create Person</a>
+<a onclick="getPartialLink(event)" data-target="createPerson" asp-action="PersonCreatePartial" asp-controller="Persons">Create Person</a>
 <a onclick="postLink(event)" data-target="createPerson" asp-action="PersonCreatePartial" asp-controller="Persons">Create Person test</a>
 <a asp-action="Create">Create Person</a>
 <a asp-action="Filter">Filter Person</a>
@@ -45,7 +45,7 @@
     }
 </table>
 
-<table>
+<table id="personTable">
     @foreach (Person aPerson in Model)
     {
         <tr>
@@ -54,7 +54,13 @@
                 Country: @aPerson.Country
 
                 <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove Person</a>
+                <a asp-controller="Persons" asp-action="PersonRenamePartial" asp-route-id="@aPerson">Rename Person</a>
             </td>
         </tr>
     }
 </table>
+<div>
+    <div id="newListItem">
+
+    </div>
+</div>

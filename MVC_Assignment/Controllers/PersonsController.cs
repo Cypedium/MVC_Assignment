@@ -70,14 +70,19 @@ namespace MVC_Assignment.Models
         }
 
         [HttpPost]
-        public IActionResult PersonCreatePartial(PersonViewModel person) //personViewModel uses to avoid users to access Id
+        public IActionResult PersonCreatePartial(PersonViewModel personviewmodel) //personViewModel uses to avoid users to access Id
         {
-            if (ModelState.IsValid)
-            {
-                _personService.Create(person.Name, person.Country);
-                return PartialView("Index", _personService.All());
-            }
-            return View(person); //personViewModel uses to sent wrong input to View 
+          return PartialView("_AddToList", _personService.Create(personviewmodel.Name, personviewmodel.Country));
+        }
+        [HttpGet]
+        public IActionResult PersonRenamePartial()
+        {
+            return PartialView("_PersonRenamePartial");
+        }
+        [HttpPost]
+        public IActionResult PersonRenamePartial(Person person)
+        {
+            return PartialView("_RenameListItem", _personService.Create(person.Name, person.Country));
         }
     }
 }

@@ -28,10 +28,9 @@ namespace MVC_Assignment.Models
             {
                 return null;
             }
-
+            
             Person person = new Person()
             {
-                       Id = ++idCounter,
                        Name = name,
                        Country = country
             };
@@ -70,6 +69,13 @@ namespace MVC_Assignment.Models
             return filterPersonList;
         }
             
-            //bool Update(Person person);
+        //bool Update(Person person)
+        //{
+        //    Person updatedPerson = new Person()
+        //    {
+        //        updatedPerson.Name = person.Name;
+        //        updatedPerson.
+        //     }
+        //}
     }
 }

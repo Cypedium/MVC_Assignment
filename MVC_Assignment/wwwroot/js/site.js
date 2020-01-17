@@ -12,35 +12,9 @@ $(document).ready(function () {
 
 
 
-//$(document).ready(function () {
-//    $("#aPartialPersonEdit").click(function (e)
-//    {
-//        e.preventDefault();
-//        var _this = $(this);
-//        console.log(_this);
 
-//        $.get(_this.attr("href"), function (res)
-//        {                  //_this.attr("href")
-//            console.log(_this.data("target"));
-//            $('#' + _this.data("target")).html(res);
-//        });
-//    });
-//})
 
-//document.getElementById("aPartialPersonEdit").addEventListener("click", function () { });
-
-//document.getElementById("PartialViewId").addEventListener("click", function (e) {
-
-//    e.preventDefault();
-//    var _this = $(this);
-//    console.log(this);
-//    console.log(_this.attr("href"));
-//    $.get(_this.attr("href"), function (res) {
-//        $('#' + _this.data("target")).html(res);
-//    });
-//});
-
-function partialLink (event) {
+function getPartialLink (event) {
     event.preventDefault();
     console.log("Get");
     
@@ -52,16 +26,41 @@ function partialLink (event) {
     });
 }
 
-function postLink(event) {
+function getPartialCreate(event) {
     event.preventDefault();
-    console.log("Post");
-    console.log(event);
+    console.log("Get");
+
     var _this = event.target;
-    
-    $.post(_this.action, { Name: "Ida", Country: "Sverige" }, function (postResult) {
-        $('#' + _this.dataset.target).html(postResult);
+
+    $.get(_this.href, function (getResult) {
+
+        $('#' + _this.dataset.target).append(getResult);
     });
 }
+function postLink(event) {
+    event.preventDefault();
+    
+    var _this = event.target;
+    
+    $.post(_this.action, {
+        Name: "Ida",
+        Country: "Sverige"
+    },
+        function (postResult) {
+        $('#' + _this.dataset.target).append(postResult);
+        });
+}
+function postRename(event) {
+    event.preventDefault();
 
+    var _this = event.target;
 
-//$.post(_this.action, { Name: _this.form.elements[0].value, Country: _this.form.elements[1].value },  function (postResult) {
+    $.post(_this.action, {
+        Name: Greger,
+        Country: Germany
+    },
+        function (postResult) {
+            $('#' + _this.dataset.target).replaceWith(postResult);
+        });
+}
+
