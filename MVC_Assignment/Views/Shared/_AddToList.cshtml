@@ -1,15 +1,19 @@
-﻿@model Person
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@    
-        <tr id="@("personId" + Model.Id)">
-            <td>
-                Name: @Model.Name
-                Country: @Model.Country
+﻿@model IEnumerable<MVC_Assignment.Models.Person>
 
-                <a asp-controller="Persons" asp-action="Remove" asp-route-id="@Model.Id">Remove Person</a>
-            </td>
-        </tr>
-    
-@*</table>*@
-
+@foreach (Person aPerson in Model)
+{
+    <tr @("personId" + aPerson.Id)>
+        <td>
+            @aPerson.Name
+        </td>
+        <td> &nbsp;&nbsp;</td>
+        <td>
+            @aPerson.Country
+        </td>
+        <td></td>
+        <td>
+            <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove</a>
+            <a onclick="getPartialLink(event)" asp-controller="Persons" asp-action="PersonRenamePartial">Rename</a>
+        </td>
+    </tr>
+}

@@ -7,7 +7,7 @@ namespace MVC_Assignment.Models
 {
     public class PersonService : IPersonService
     {
-        static int idCounter = 0;
+        //static int idCounter = 0;
         public string filterInput = "";
         private static List<Person> personList = new List<Person>();
 

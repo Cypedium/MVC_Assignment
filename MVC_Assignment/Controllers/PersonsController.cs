@@ -22,7 +22,7 @@ namespace MVC_Assignment.Models
         [HttpPost]
         public IActionResult Create(PersonViewModel person) //personViewModel uses to avoid users to access Id
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) //Alltid kontrollera input på backend
             {
                 _personService.Create(person.Name, person.Country);
 
@@ -70,9 +70,13 @@ namespace MVC_Assignment.Models
         }
 
         [HttpPost]
-        public IActionResult PersonCreatePartial(PersonViewModel personviewmodel) //personViewModel uses to avoid users to access Id
+        public IActionResult PersonCreatePartial(PersonViewModel personViewModel) //personViewModel uses to avoid users to access Id
         {
-          return PartialView("_AddToList", _personService.Create(personviewmodel.Name, personviewmodel.Country));
+            if (ModelState.IsValid)
+            {
+            return PartialView("_AddToList", _personService.Create(personViewModel.Name, personViewModel.Country));
+            }
+            return View(personViewModel);
         }
         [HttpGet]
         public IActionResult PersonRenamePartial()
@@ -82,7 +86,11 @@ namespace MVC_Assignment.Models
         [HttpPost]
         public IActionResult PersonRenamePartial(Person person)
         {
-            return PartialView("_RenameListItem", _personService.Create(person.Name, person.Country));
+            if (ModelState.IsValid)
+            {
+                return PartialView("_RenameListItem", _personService.Create(person.Name, person.Country));
+            }
+            return View(person); //Send person back with errormessage throug ModelState.IsValid
         }
     }
 }
