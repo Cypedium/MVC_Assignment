@@ -79,16 +79,31 @@ namespace MVC_Assignment.Models
             return View(personViewModel);
         }
         [HttpGet]
+        public IActionResult PersonFilterPartial()
+        {
+            return PartialView("_PersonFilterPartial");
+        }
+        [HttpPost]
+        public IActionResult PersonFilterPartial(string filterInput)
+        {
+            if (ModelState.IsValid)
+            {
+                return PartialView("_FilterListItem", _personService.Filter(filterInput));
+            }
+            return View(filterInput);
+        }
+        [HttpGet]
         public IActionResult PersonRenamePartial()
         {
             return PartialView("_PersonRenamePartial");
         }
         [HttpPost]
-        public IActionResult PersonRenamePartial(Person person)
+        public IActionResult PersonRenamePartial(PersonViewModel personViewModel, int id)
         {
             if (ModelState.IsValid)
             {
-                return PartialView("_RenameListItem", _personService.Create(person.Name, person.Country));
+                return PartialView("_RenameListItem", _personService.Update(personViewModel)
+));
             }
             return View(person); //Send person back with errormessage throug ModelState.IsValid
         }

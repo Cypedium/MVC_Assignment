@@ -11,7 +11,7 @@ namespace MVC_Assignment.Models
         bool Remove(int id);
         List<Person> All();
         List<Person> Filter(string filterInput);
-        //bool Update(Person car);
+        bool Update(Person car);
         Person Find(int id);
     }
 }

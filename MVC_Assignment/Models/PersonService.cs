@@ -7,7 +7,7 @@ namespace MVC_Assignment.Models
 {
     public class PersonService : IPersonService
     {
-        //static int idCounter = 0;
+        static int idCounter = 3;
         public string filterInput = "";
         private static List<Person> personList = new List<Person>();
 
@@ -31,6 +31,7 @@ namespace MVC_Assignment.Models
             
             Person person = new Person()
             {
+                       Id= ++idCounter,
                        Name = name,
                        Country = country
             };
@@ -56,6 +57,7 @@ namespace MVC_Assignment.Models
             {
             return personList.SingleOrDefault(person => person.Id == id);
             }
+
         public List<Person> Filter(string filterInput)
         {
             List<Person> filterPersonList = new List<Person>();
@@ -68,14 +70,28 @@ namespace MVC_Assignment.Models
             }
             return filterPersonList;
         }
-            
-        //bool Update(Person person)
-        //{
-        //    Person updatedPerson = new Person()
-        //    {
-        //        updatedPerson.Name = person.Name;
-        //        updatedPerson.
-        //     }
-        //}
+
+        public bool Update(PersonViewModel personViewModel, int id)
+        { 
+        if (personViewModel == null)
+            {
+                return false;
+            }
+
+            Person currentPerson = Find(id);
+
+            if (id == 0)
+            {
+                return false;
+            }
+
+            currentPerson.Name = personViewModel.Name;
+            currentPerson.Country = personViewModel.Country;
+           
+            //personList.Update(currentPerson);
+
+            return true;
+        }
     }
 }
+

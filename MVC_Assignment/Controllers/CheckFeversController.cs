@@ -9,7 +9,7 @@ namespace MVC_Assignment.Controllers
 {
     public class CheckFeversController : Controller
     {
-       
+       [HttpGet]
         public IActionResult Index()
         {
             return View();
