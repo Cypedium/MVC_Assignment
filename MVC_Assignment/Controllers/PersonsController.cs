@@ -86,26 +86,26 @@ namespace MVC_Assignment.Models
         [HttpPost]
         public IActionResult PersonFilterPartial(string filterInput)
         {
-            if (ModelState.IsValid)
-            {
-                return PartialView("_FilterListItem", _personService.Filter(filterInput));
-            }
-            return View(filterInput);
+            return PartialView("_FilterListItem", _personService.Filter(filterInput));
         }
         [HttpGet]
-        public IActionResult PersonRenamePartial()
+        public IActionResult PersonRenamePartial(int id)
         {
-            return PartialView("_PersonRenamePartial");
+            
+            return PartialView("_PersonRenamePartial", _personService.Find(id));
         }
         [HttpPost]
         public IActionResult PersonRenamePartial(PersonViewModel personViewModel, int id)
         {
             if (ModelState.IsValid)
             {
-                return PartialView("_RenameListItem", _personService.Update(personViewModel)
-));
+               if( _personService.Update(personViewModel, id))
+                {
+                    return PartialView("_AddToList", _personService.Find(id));
+                }
+                return BadRequest();
             }
-            return View(person); //Send person back with errormessage throug ModelState.IsValid
+            return View(personViewModel); //Send person back with errormessage throug ModelState.IsValid
         }
     }
 }

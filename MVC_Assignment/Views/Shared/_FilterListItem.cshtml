@@ -1,4 +1,4 @@
-﻿
+﻿@model List<PersonService>
 @{
     ViewData["Title"] = "PersonList";
 }
@@ -15,14 +15,14 @@
         </div>
     </div>
 
-    @foreach (var item in Model)
+    @foreach (PersonService item in Model)
     {
         <div class="row">
             <div class="col">
-                <p>@item.Name</p>
+                <p>@item</p>
             </div>
             <div class="col">
-                <p>@item.Country</p>
+                <p>@item</p>
             </div>
         </div>
     }

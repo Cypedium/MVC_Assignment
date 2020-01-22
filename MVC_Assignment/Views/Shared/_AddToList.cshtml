@@ -1,18 +1,6 @@
 ﻿@model Person
-    @*<table>
-        
-        <tr>
-            <td>Name:</td>
-            <td> &nbsp;&nbsp;</td>
-            <td>Country:</td>
-            <td>&nbsp;&nbsp;</td>
-            <td> </td>
-        </tr>
-
-        @foreach (Person aPerson in Model)
-        {*@
-    <table>
-        <tr @("personId" + Model.Id)>
+   
+        <tr id="@("personId" + Model.Id)">
             <td>
                 @Model.Name&nbsp;&nbsp;&nbsp;
             </td>
@@ -23,10 +11,6 @@
             <td>&nbsp;&nbsp;</td>
             <td>
                 <a asp-controller="Persons" asp-action="Remove" asp-route-id="@Model.Id">Remove</a>
-                <a data-target="renamePerson" onclick="getPartialLink(event)" asp-controller="Persons" asp-action="PersonRenamePartial">Rename</a>
+                <a data-target="modifyPerson" onclick="getPartialLink(event)" asp-controller="Persons" asp-action="PersonRenamePartial" asp-route-id="@Model.Id">Rename</a>
             </td>
         </tr>
-    </table>
-        @*}
-
-    </table>*@

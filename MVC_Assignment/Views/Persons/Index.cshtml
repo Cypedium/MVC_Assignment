@@ -8,19 +8,14 @@
 <p>@ViewBag.msg</p>
 
 <a onclick="getPartialLink(event)" data-target="modifyPerson" asp-action="PersonCreatePartial" asp-controller="Persons">Partial Create Person</a>
-<a onclick="getPartialLink(event)" data-target="modifyPerson" asp-action="PersonRenamePartial" asp-controller="Persons">Partial Rename Person</a>
 <a onclick="getPartialLink(event)" data-target="modifyPerson" asp-action="PersonFilterPartial" asp-controller="Persons">Partial Filter Person</a>
 <br />
+
 <a asp-action="Create">Create Person</a>
 <a asp-action="Filter">Filter Person</a>
 <hr />
 
 <div>
-
-
-
-    
-
 
     <div id="targetPartial">
 
@@ -43,57 +38,16 @@
 
     @foreach (Person aPerson in Model)
     {
-
-        <tr @("personId" + aPerson.Id)>
-            <td>
-                @aPerson.Name
-            </td>
-            <td> &nbsp;&nbsp;</td>
-            <td>
-                @aPerson.Country
-            </td>
-            <td></td>
-            <td>
-                <a asp-controller="Persons" asp-action="Remove" asp-route-id="@aPerson.Id">Remove</a>
-                <a data-target="addToList" onclick="getPartialLink(event)" asp-controller="Persons" asp-action="PersonRenamePartial">Rename</a>
-            </td>
-        </tr>
+        <partial name="_AddToList" model="aPerson" />
     }
 
 </table>
-<div id="addToList"></div>
-<br />
-<hr />
-<div id="modifyPerson">
 
+<div id="addToList"></div>
+    <br />
+    <hr />
+<div id="modifyPerson">
+    <br />
+    <hr />
 </div>
 
-@*<table>
-
-        <tr>
-            <td>Name:</td>
-            <td> &nbsp;&nbsp;</td>
-            <td>Country:</td>
-            <td>&nbsp;&nbsp;</td>
-            <td> </td>
-        </tr>
-
-            @foreach (Person aPerson in Model)
-            {
-                <partial name="_AddToList" model="aPerson" />
-            }
-
-    </table>*@
-
-@*<table>
-        @foreach (Person aPartialPerson in Model)
-        {
-            <tr>
-                <td>
-                    <a onclick="function()" id="aPartialPersonEdit" asp-controller="Persons" asp-action="PersonPartialEdit" asp-route-id="@aPartialPerson.Id" data-target="targetPartial2">Person Nr:@aPartialPerson.Id</a>
-                    <a onclick="partialLink(event)" data-target="targetPartial2" asp-controller="Persons" asp-action="PersonPartialId" asp-route-id="@aPartialPerson.Id">Person Nr:@aPartialPerson.Id</a>
-                </td>
-            </tr>
-
-        }
-    </table>*@

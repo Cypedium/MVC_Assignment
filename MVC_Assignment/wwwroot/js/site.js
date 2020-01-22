@@ -27,8 +27,10 @@ function postLink(event) {
     event.preventDefault();
     
     var _this = event.target;
+
     console.log(event);
-    
+    console.log('#' + _this.dataset.target);
+
     $.post(_this.action + "/",
         {
             Name: _this[0].value, Country: _this[1].value
@@ -41,15 +43,18 @@ function postRename(event) {
     event.preventDefault();
 
     var _this = event.target;
-
-    $.post(_this.action, {
-        Name: Greger,
-        Country: Germany
+    
+    $.post(_this.action + "/",
+        {
+        Name: _this[0].value, Country: _this[1].value
     },
-        function (postResult) {
-            $('#' + _this.dataset.target).replaceWith(postResult);
+        function (postResult) { 
+            $('#' +"personId"+_this[2].value).replaceWith(postResult); //use # to find id
         });
 }
+
+//console.log(_this.dataset.target);
+//console.log(postResult);
 
 //$(document).ready(function () {
 //    $("#btnPartial").click(function () {

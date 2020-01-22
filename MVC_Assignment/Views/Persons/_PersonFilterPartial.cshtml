@@ -1,15 +1,15 @@
-﻿@model PersonService
+﻿
 @{
     ViewData["Title"] = "Filter";
 }
 
 <h1>Filter Persons</h1>
 
-<form method="post" onsubmit="postLink(event)" asp-controller="Persons" asp-action="PersonFilterPartial">
+<form method="post" onsubmit="postLink(event)" data-target="addToList" asp-controller="Persons" asp-action="PersonFilterPartial" asp-route-id="">
 
-    <label asp-for="filterInput"></label>
-    <input asp-for="filterInput" /><span asp-validation-for="filterInput"></span>
 
+    <input type="text" name="filterInput" />
     <input type="submit" value="Search for Name or Country" />
+
 
 </form>
